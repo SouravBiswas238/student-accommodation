@@ -1,0 +1,38 @@
+.my-banner {
+    /* background: url('https://i.ibb.co/JqmSdX8/student-accommodation-800x600.jpg') no-repeat center; */
+    background: url('../../assets/penryn_campus_accommodation_skyline.jpg') no-repeat center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 80vh;
+    opacity: 1;
+    visibility: inherit;
+    z-index: -1;
+}
+
+.my-video::before {
+    content: '';
+    height: 70%;
+    width: 96%;
+    background-color: rgb(80, 75, 75);
+    position: absolute;
+    top: 103px;
+    left: 7px;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.my-video::after {
+    content: '';
+    height: 70%;
+    width: 96%;
+    background-color: rgb(80, 75, 75);
+    position: absolute;
+    top: -14px;
+    left: 115px;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
