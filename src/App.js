@@ -5,8 +5,8 @@ import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import About from './components/About/About';
 import Login from './components/Login/Login';
-import Sidebar from './components/sidebar/Sidebar';
 import SignUp from './components/SingUp/SignUp';
+import Dashboard from './components/Dashboard/Dashboard';
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
 
-        <Route path="/dashboard" element={<Sidebar />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
 
 
       </Routes>
