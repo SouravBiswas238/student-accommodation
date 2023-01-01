@@ -1,16 +1,186 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import PasswordStrengthBar from 'react-password-strength-bar';
+import { Link, useNavigate } from 'react-router-dom';
+import makeId from './SuggestPass';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
+
+
 
 const SignUp = () => {
+    const [passwordBar, setPasswordBar] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const navigate = useNavigate();
+
+
+
+
+
+
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+    const [sendEmailVerification, varificationSending, verificationError] = useSendEmailVerification(auth);
+
+
+    const onSubmit = async (data) => {
+        console.log(data)
+
+        const email = data.email;
+        const password = data.password;
+        await createUserWithEmailAndPassword(email, password);
+        await sendEmailVerification();
+
+        toast("User created successfully");
+
+        navigate('/')
+
+        
+
+
+    }
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+    if(user){
+        navigate('/')
+    }
+
     return (
         <div className="w-full mx-auto my-5 max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100 ">
 
-            <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
+            <h2 className="mb-3 text-3xl font-semibold text-center">Create a new account</h2>
 
-            <p className="text-sm text-center dark:text-gray-400">Dont have account?
-                <a href="#" rel="noopener noreferrer" className="focus:underline hover:underline">Sign up here</a>
-            </p>
+            {/* email password login part */}
+            <form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
+                <div className="space-y-4">
+                    <div className="space-y-2">
+                        <label for="firstName" className="block text-sm">First Name</label>
+                        <input id="firstName" placeholder="leroy" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" {...register('firstName', { required: true })} />
+                        {errors.firstName && <p className='text-red-500'>First name is required.</p>}
+
+
+                    </div>
+                    <div className="space-y-2">
+                        <label for="lastName" className="block text-sm">Last Name</label>
+                        <input id="lastName" placeholder="lastName" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" {...register('lastName', { required: true })} />
+                        {errors.lastName && <p className='text-red-500'>Last name is required.</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label for="age" className="block text-sm">Enter Age</label>
+                        <input id="age" placeholder="" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"  {...register('age', { pattern: /\d+/ })} />
+                        {errors.age && <p className='text-red-500' >Please enter number for age.</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                        <label for="email" className="block text-sm">Email Address</label>
+                        <input id="email" placeholder="leroy" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"  {...register('email', { required: true })} />
+                        {errors.email && <p className='text-red-500'>Please enter valid email address</p>}
+                    </div>
+
+                    <div className="form-control">
+                        {/* Password */}
+                        <div className="space-y-2">
+                            <label for="password" className="block text-sm">Password</label>
+                            <input
+                                value={passwordBar}
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="Input Password"
+                                id="password"
+                                name="password"
+                                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+                                {...register('password', {
+                                    required: true,
+                                    // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                                })}
+                                onChange={(e) => setPasswordBar(e.target.value)}
+                            />
+                        </div>
+
+                        {/*Confirm Password */}
+                        {/* <div className="space-y-2">
+                            <label for="password" className="block text-sm"> Retype Password</label>
+
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="Confirm Password"
+                                name="password"
+                                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+                                {...register('confirmPassword', {
+                                    required: true,
+                                    // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                                })}
+                                onChange={(e) => setPasswordBar(e.target.value)}
+                            />
+                        </div> */}
+                        <div className="text-md flex  justify-between mt-4  md:items-center xs:flex-col-reverse">
+                            <div>
+                                <button
+                                    className="label-text font-semibold dark:text-[#8C9BB6] text-[#334155]"
+                                    onClick={() => setPasswordBar(makeId(10))}
+                                >
+                                    Suggest a Strong Password
+                                </button>
+                            </div>
+                            <div className="text-xl flex justify-end">
+                                <div className="form-control ">
+                                    <label className="label cursor-pointer  ">
+                                        <div className="flex justify-around gap-2 items-center ">
+                                            <p className="label-text font-semibold dark:text-[#8C9BB6] text-[#334155]">
+                                                Show Password
+                                            </p>
+                                            <input
+                                                onChange={() =>
+                                                    setShowPassword(!showPassword)
+                                                }
+                                                type="checkbox"
+                                                checked={showPassword}
+                                                className="checkbox"
+                                            />
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <PasswordStrengthBar password={passwordBar} />
+
+                        <label className="label">
+                            {errors.password?.type === 'pattern' && (
+                                <span className="label-text-alt text-red-500 text-lg">
+                                    Password must be atleast 6 characters containing
+                                    both capital and small letter, a Number, 1 special
+                                    character
+                                </span>
+                            )}
+                            {errors?.password?.type === 'required' && (
+                                <span className="label-text-alt text-red-500 text-lg">
+                                    Password is Required
+                                </span>
+                            )}
+                        </label>
+                    </div>
+                </div>
+                <div className='mt-[-20px]'>
+                    <input type="submit" className="w-full px-8 py-3  font-semibold rounded-md dark:bg-violet-400 hover:bg-violet-600" />
+                </div>
+            </form>
+            {/* google login part */}
             <div className="my-6 space-y-4">
-                <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
+                <button onClick={() => signInWithGoogle()} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
                         <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
                     </svg>
@@ -32,22 +202,16 @@ const SignUp = () => {
             <div className="flex items-center w-full my-4">
 
             </div>
-            <form novalidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
-                <div className="space-y-4">
-                    <div className="space-y-2">
-                        <label for="email" className="block text-sm">Email address</label>
-                        <input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
-                    </div>
-                    <div className="space-y-2">
-                        <div className="flex justify-between">
-                            <label for="password" className="text-sm">Password</label>
-                            <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-400">Forgot password?</a>
-                        </div>
-                        <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
-                    </div>
-                </div>
-                <button type="button" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900">Sign in</button>
-            </form>
+
+
+
+            <p className="text-xs text-center sm:px-6 text-gray-400 pt-5">Don't have an account?
+                <Link to="/login" className=" underline text-gray-100">Login
+                </Link>
+            </p>
+
+
+
         </div>
     );
 };

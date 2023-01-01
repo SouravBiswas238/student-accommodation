@@ -1,10 +1,27 @@
 import React from 'react';
 import logo from '../../assets/university.png'
 import { NavLink } from "react-router-dom";
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Navigation = () => {
+
+    const [user] = useAuthState(auth);
+    console.log(user?.displayName)
+
+    // console.log(user)
+
+    const handleSignOut = () => {
+        signOut(auth);
+
+    }
+
     const activeStyle = 'flex items-center px-4 -mb-1 border-b-2 dark:border-transparent dark:text-violet-400 dark:border-violet-400'
     const normalLink = 'flex items-center px-4 -mb-1 border-b-2 dark:border-transparent'
+
+
     return (
 
         <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
@@ -50,12 +67,13 @@ const Navigation = () => {
                 <div className="items-center flex-shrink-0 hidden lg:flex">
 
                     {
-                        // user ? 
-                        // <NavLink onClick={handelSignOut} eventKey="link-1" className='text-white'>Log Out</NavLink> 
-                        // :
-                        <NavLink className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900" eventKey="link-1" to="/login">Log In</NavLink>
+                        user ?
+                            <button onClick={handleSignOut} className='text-white px-5'> Log out </button>
+                            :
+                            <NavLink className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900" eventKey="link-1" to="/login">Log In</NavLink>
                     }
 
+                    <NavLink className='text-white'>{user?.displayName} </NavLink>
 
 
                 </div>
@@ -65,7 +83,7 @@ const Navigation = () => {
                     </svg>
                 </button>
             </div>
-        </header>
+        </header >
 
     );
 };

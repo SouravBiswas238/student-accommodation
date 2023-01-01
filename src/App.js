@@ -9,6 +9,7 @@ import SignUp from './components/SingUp/SignUp';
 import Dashboard from './components/Dashboard/Dashboard';
 import AddMember from './components/Dashboard/AddMember/AddMember';
 import Outlet from './components/Dashboard/Outlet/Outlet';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -34,6 +35,7 @@ function App() {
 
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
