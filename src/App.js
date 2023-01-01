@@ -7,6 +7,9 @@ import About from './components/About/About';
 import Login from './components/Login/Login';
 import SignUp from './components/SingUp/SignUp';
 import Dashboard from './components/Dashboard/Dashboard';
+import AddMember from './components/Dashboard/AddMember/AddMember';
+import Outlet from './components/Dashboard/Outlet/Outlet';
+
 
 
 function App() {
@@ -20,7 +23,13 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
 
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}>
+
+          <Route index element={<Outlet></Outlet>} ></Route>
+          <Route path='add-member' element={<AddMember></AddMember>} ></Route>
+
+
+        </Route>
 
 
       </Routes>

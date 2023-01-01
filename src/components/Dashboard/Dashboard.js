@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Outlet from './Outlet/Outlet';
+import { Outlet } from 'react-router-dom';
+
 import Sidebar from './sidebar/Sidebar';
 
 const Dashboard = () => {
