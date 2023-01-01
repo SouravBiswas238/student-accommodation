@@ -37,7 +37,7 @@ const Sidebar = ({ dashboardSwitch }) => {
                         </li>
                     </Link>
 
-                    <Link to="addMember">
+                    <Link to="add-member">
                         <li className={dashboardLinkStyle}>
                             <IoMdPersonAdd className="mr-2" />
                             <span className={`${!dbSwitch && 'hidden'}`}> Add member</span>
