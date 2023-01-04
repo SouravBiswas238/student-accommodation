@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../assets/university.png'
 import { NavLink } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -7,11 +7,18 @@ import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 
 const Navigation = () => {
+    // const [globalUser, setGlobalUser] = useState({});
+
 
     const [user] = useAuthState(auth);
-    console.log(user?.displayName)
+    // console.log(user?.displayName)
+    // const email = user?.email;
 
-    // console.log(user)
+    // fetch(`http://localhost:5000/user/${email}`)
+    //     .then((res) => res.json())
+    //     .then((data) => setGlobalUser(data));
+
+    // console.log(globalUser)
 
     const handleSignOut = () => {
         signOut(auth);
@@ -74,6 +81,7 @@ const Navigation = () => {
                     }
 
                     <NavLink className='text-white'>{user?.displayName} </NavLink>
+                    {/* <NavLink className='text-white'>{globalUser} </NavLink> */}
 
 
                 </div>

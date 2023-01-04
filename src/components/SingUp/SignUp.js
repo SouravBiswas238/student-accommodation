@@ -42,11 +42,25 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(email, password);
         await sendEmailVerification();
 
-        toast("User created successfully");
+        toast.success("Verification email send.");
+        toast.success("User create successfully");
 
         navigate('/')
 
+    
         
+        fetch(`http://localhost:5000/user`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success("Successfully Update Your data")
+            })
 
 
     }

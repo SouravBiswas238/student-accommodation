@@ -10,13 +10,18 @@ import Dashboard from './components/Dashboard/Dashboard';
 import AddMember from './components/Dashboard/AddMember/AddMember';
 import Outlet from './components/Dashboard/Outlet/Outlet';
 import { ToastContainer } from 'react-toastify';
+import AddOtherCost from './components/Dashboard/AddOtherCost/AddOtherCost';
+import AddMealCost from './components/Dashboard/AddMealCost/AddMealCost';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import AdminOutlet from './components/AdminDashboard/AdminOutlet/AdminOutlet';
+import { UserStoreProvider } from './StateManagment/UserContexStore';
 
 
 
 function App() {
   return (
     <div>
-
+<UserStoreProvider>
       <Navigation></Navigation>
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -24,10 +29,21 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
 
+
+        <Route path="/admin" element={<AdminDashboard />}>
+
+          <Route index element={<AdminOutlet></AdminOutlet>} ></Route>
+          {/* <Route path='add-request' element={<AddMember></AddMember>} ></Route> */}
+         
+
+        </Route>
+
         <Route path="/dashboard" element={<Dashboard />}>
 
           <Route index element={<Outlet></Outlet>} ></Route>
           <Route path='add-member' element={<AddMember></AddMember>} ></Route>
+          <Route path='mealCost' element={<AddMealCost></AddMealCost>} ></Route>
+          <Route path='addCost' element={<AddOtherCost></AddOtherCost>} ></Route>
 
 
         </Route>
@@ -35,7 +51,8 @@ function App() {
 
       </Routes>
       <Footer></Footer>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
+      </UserStoreProvider>
     </div>
   );
 }
