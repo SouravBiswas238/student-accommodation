@@ -34,11 +34,11 @@ const AdminOutlet = () => {
             })
 
     }
-    const  addMember = (email) => {
+    const addMember = (email) => {
         console.log(email)
 
         const data = { isMember: true }
-        
+
 
         fetch(`http://localhost:5000/user/${email}`, {
             method: 'PUT',

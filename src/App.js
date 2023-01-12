@@ -15,6 +15,7 @@ import AddMealCost from './components/Dashboard/AddMealCost/AddMealCost';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import AdminOutlet from './components/AdminDashboard/AdminOutlet/AdminOutlet';
 import { UserStoreProvider } from './StateManagment/UserContexStore';
+import AddMeal from './components/Dashboard/AddMeal/AddMeal';
 
 
 
@@ -43,6 +44,7 @@ function App() {
           <Route index element={<Outlet></Outlet>} ></Route>
           <Route path='add-member' element={<AddMember></AddMember>} ></Route>
           <Route path='mealCost' element={<AddMealCost></AddMealCost>} ></Route>
+          <Route path='addMeal' element={<AddMeal></AddMeal>} ></Route>
           <Route path='addCost' element={<AddOtherCost></AddOtherCost>} ></Route>
 
 
