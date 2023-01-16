@@ -16,44 +16,54 @@ import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import AdminOutlet from './components/AdminDashboard/AdminOutlet/AdminOutlet';
 import { UserStoreProvider } from './StateManagment/UserContexStore';
 import AddMeal from './components/Dashboard/AddMeal/AddMeal';
+import 'react-toastify/dist/ReactToastify.css';
+import TodaysMeal from './components/AdminDashboard/TodaysMeal/TodaysMeal';
 
 
 
 function App() {
   return (
     <div>
-<UserStoreProvider>
-      <Navigation></Navigation>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
+      <UserStoreProvider>
+        <Navigation></Navigation>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
 
 
-        <Route path="/admin" element={<AdminDashboard />}>
+          <Route path="/admin" element={<AdminDashboard />}>
 
-          <Route index element={<AdminOutlet></AdminOutlet>} ></Route>
-          {/* <Route path='add-request' element={<AddMember></AddMember>} ></Route> */}
-         
-
-        </Route>
-
-        <Route path="/dashboard" element={<Dashboard />}>
-
-          <Route index element={<Outlet></Outlet>} ></Route>
-          <Route path='add-member' element={<AddMember></AddMember>} ></Route>
-          <Route path='mealCost' element={<AddMealCost></AddMealCost>} ></Route>
-          <Route path='addMeal' element={<AddMeal></AddMeal>} ></Route>
-          <Route path='addCost' element={<AddOtherCost></AddOtherCost>} ></Route>
+            <Route index element={<AdminOutlet></AdminOutlet>} ></Route>
+            {/* <Route path='add-request' element={<AddMember></AddMember>} ></Route> */}
 
 
-        </Route>
+          </Route>
+
+          <Route path="/dashboard" element={<Dashboard />}>
+
+            <Route index element={<Outlet></Outlet>} ></Route>
+            <Route path='add-member' element={<AddMember></AddMember>} ></Route>
+            <Route path='mealCost' element={<AddMealCost></AddMealCost>} ></Route>
+            <Route path='addMeal' element={<AddMeal></AddMeal>} ></Route>
+            <Route path='addCost' element={<AddOtherCost></AddOtherCost>} ></Route>
 
 
-      </Routes>
-      <Footer></Footer>
-      {/* <ToastContainer /> */}
+          </Route>
+          <Route path="/admin" element={<AdminDashboard />}>
+
+            <Route index element={<AdminOutlet></AdminOutlet>} ></Route>
+            <Route path='today-on-meal' element={<TodaysMeal></TodaysMeal>} ></Route>
+
+
+
+          </Route>
+
+
+        </Routes>
+        <Footer></Footer>
+        <ToastContainer />
       </UserStoreProvider>
     </div>
   );

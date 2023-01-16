@@ -19,11 +19,6 @@ const SignUp = () => {
     } = useForm();
     const navigate = useNavigate();
 
-
-
-
-
-
     const [
         createUserWithEmailAndPassword,
         user,

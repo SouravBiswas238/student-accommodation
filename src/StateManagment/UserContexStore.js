@@ -26,10 +26,10 @@ const UserStoreProvider = ({ children }) => {
     const { data, isLoading, error, refetch } = useQuery('repoData', () =>
         fetch(`http://localhost:5000/user/${email}`, {
             method: 'GET',
-
-        }).then(res =>
-            res.json()
-        )
+        })
+            .then(res =>
+                res.json()
+            )
     )
 
     // Get single user data form api

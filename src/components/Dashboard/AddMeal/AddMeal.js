@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
+import { UserStore } from '../../../StateManagment/UserContexStore';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const AddMeal = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const handelMeal = data => console.log(data);
-
     const [selected, setSelected] = useState(new Date());
+    const userStore = useContext(UserStore);
+    const data = userStore?.data;
+    const email = userStore?.email;
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const handelMeal = data => {
+        data = { data, email }
+
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+
+        toast.success("successfully adding")
+    }
 
 
     return (
@@ -23,7 +44,7 @@ const AddMeal = () => {
                         <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="object-cover w-6 h-6 rounded-full dark:bg-gray-500" />
                     </div>
                     <div>
-                        <h4 className="font-bold justify-center">Leroy Jenkins</h4>
+                        <h4 className="font-bold justify-center">{data?.firstName + ' ' + data?.lastName}</h4>
                     </div>
                 </div>
 
@@ -42,7 +63,7 @@ const AddMeal = () => {
 
                                 />
 
-                                <input value={format(selected, 'PP')} placeholder={format(selected, 'PP')}  className="w-full px-4 py-3 rounded-md  bg-gray-900 text-gray-100 border-violet-400"  {...register("date")} />
+                                <input value={format(selected, 'PP')} placeholder={format(selected, 'PP')} className="w-full px-4 py-3 rounded-md  bg-gray-900 text-gray-100 border-violet-400"  {...register("date")} />
                                 {errors.date && <p className='text-red-500'>Please enter a date </p>}
                             </div>
                             <div className="space-y-1 text-sm">

@@ -36,40 +36,40 @@ const AdminSidebar = ({ dashboardSwitch }) => {
                             <span className={`${!dbSwitch && 'hidden py-2'}`}>All member list</span>
                         </li>
                     </Link>
+                    <Link to="today-on-meal">
+                        <li className={dashboardLinkStyle}>
+                            <AiFillFileText className="mr-2" />
+                            <span className={`${!dbSwitch && 'hidden'}  text-[16px] `} >Todays On meal</span>
+                        </li>
+                    </Link>
+
                     <Link to="">
-                            <li className={dashboardLinkStyle}>
-                                <AiFillFileText className="mr-2" />
-                                <span className={`${!dbSwitch && 'hidden'}  text-[16px] `} >Pending request</span>
-                            </li>
-                        </Link>
-                 
-                        <Link to="">
-                            <li className={dashboardLinkStyle}>
-                                <AiFillFileText className="mr-2" />
-                                <span className={`${!dbSwitch && 'hidden'} text-[16px]`} > Remove Member</span>
-                            </li>
-                        </Link>
-                        <Link to="">
-                            <li className={dashboardLinkStyle}>
-                                <AiFillFileText className="mr-2" />
-                                <span className={`${!dbSwitch && 'hidden'} text-[16px]`} > Change Manager</span>
-                            </li>
-                        </Link>
-                        <Link to="">
-                            <li className={dashboardLinkStyle}>
-                                <AiFillFileText className="mr-2" />
-                                <span className={`${!dbSwitch && 'hidden'} text-[16px]`} >Delete Old month</span>
-                            </li>
-                        </Link>
-                        <Link to="">
-                            <li className={dashboardLinkStyle}>
-                                <AiFillFileText className="mr-2" />
-                                <span className={`${!dbSwitch && 'hidden'} text-[16px]`} >Delete </span>
-                            </li>
-                        </Link>
+                        <li className={dashboardLinkStyle}>
+                            <AiFillFileText className="mr-2" />
+                            <span className={`${!dbSwitch && 'hidden'} text-[16px]`} > Remove  User</span>
+                        </li>
+                    </Link>
+                    <Link to="">
+                        <li className={dashboardLinkStyle}>
+                            <AiFillFileText className="mr-2" />
+                            <span className={`${!dbSwitch && 'hidden'} text-[16px]`} > Change Manager</span>
+                        </li>
+                    </Link>
+                    <Link to="">
+                        <li className={dashboardLinkStyle}>
+                            <AiFillFileText className="mr-2" />
+                            <span className={`${!dbSwitch && 'hidden'} text-[16px]`} >Delete Old month</span>
+                        </li>
+                    </Link>
+                    <Link to="">
+                        <li className={dashboardLinkStyle}>
+                            <AiFillFileText className="mr-2" />
+                            <span className={`${!dbSwitch && 'hidden'} text-[16px]`} >Delete </span>
+                        </li>
+                    </Link>
 
 
-                   
+
 
 
 

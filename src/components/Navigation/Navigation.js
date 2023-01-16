@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logo from '../../assets/university.png'
 import { NavLink } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import { UserStore } from '../../StateManagment/UserContexStore';
+import SpinLoading from '../Loading/SpinLoading';
 
 const Navigation = () => {
     // const [globalUser, setGlobalUser] = useState({});
 
-
+    // user info part
     const [user] = useAuthState(auth);
     // console.log(user?.displayName)
     // const email = user?.email;
+    const userStore = useContext(UserStore);
+    const data = userStore?.data;
+
 
     // fetch(`http://localhost:5000/user/${email}`)
     //     .then((res) => res.json())
@@ -75,13 +80,19 @@ const Navigation = () => {
 
                     {
                         user ?
-                            <button onClick={handleSignOut} className='text-white px-5'> Log out </button>
+                            <NavLink className='text-white'>{data?.firstName} </NavLink> :
+                            <SpinLoading height='h-12' width='w-12'></SpinLoading>
+
+                    }
+                    <NavLink className='text-white'>{user?.displayName} </NavLink>
+
+                    {
+                        user ?
+                            <button onClick={handleSignOut} className='text-white px-2 mx-2 border-l-2  '> Log out </button>
                             :
                             <NavLink className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900" eventKey="link-1" to="/login">Log In</NavLink>
                     }
 
-                    <NavLink className='text-white'>{user?.displayName} </NavLink>
-                    {/* <NavLink className='text-white'>{globalUser} </NavLink> */}
 
 
                 </div>

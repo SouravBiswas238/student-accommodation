@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AiFillFileText, AiOutlineHome, AiOutlineUpload } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa';
 import { IoMdPersonAdd } from 'react-icons/io';
 import { RiFindReplaceLine } from 'react-icons/ri';
 import { FcManager } from 'react-icons/fc';
+import { UserStore } from '../../../StateManagment/UserContexStore';
 
 const Sidebar = ({ dashboardSwitch }) => {
     // dashboard open and closed switch
     const { dbSwitch, setDbSwitch } = dashboardSwitch;
     const [arrowSwitch, setArrowSwitch] = useState(false)
+
+    const userStore = useContext(UserStore);
+    const data = userStore?.data;
 
     // dashboard link style
     const dashboardLinkStyle = `my-2 text-gray-400 hover:text-gray-50 hover:bg-[#3a3f51] flex items-center rounded-lg ${dbSwitch ? 'p-3 text-base ' : 'p-1 text-2xl justify-center'
@@ -125,7 +129,7 @@ const Sidebar = ({ dashboardSwitch }) => {
                     <div className="flex items-center p-2 mt-12 space-x-4 justify-self-end">
                         <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-lg dark:bg-gray-500" />
                         <div className={`${!dbSwitch && 'hidden'}`}>
-                            <h2 className="text-lg font-semibold  "> Leroy Jenkins</h2>
+                            <h2 className="text-lg font-semibold  ">{data?.firstName}</h2>
                             <div className='flex justify-between'>
 
                                 <span className="flex items-center">

@@ -1,6 +1,8 @@
 
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { DayPicker } from 'react-day-picker';
 import { AiFillFileText } from 'react-icons/ai';
+import { UserStore } from '../../../StateManagment/UserContexStore';
 import './Outlet.css'
 
 const Outlet = () => {
@@ -8,6 +10,22 @@ const Outlet = () => {
     var hour = CurrentTime.getHours()
     var minute = CurrentTime.getMinutes()
     var second = CurrentTime.getSeconds()
+
+    const [allUser, setAllUser] = useState([]);
+    const userStore = useContext(UserStore);
+    const data = userStore?.data;
+    // console.log(data)
+    const [selected, setSelected] = useState(new Date());
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/user`)
+            .then(res => res.json())
+            .then(data => {
+                setAllUser(data)
+            })
+    }, [])
+
+
     return (
         <div>
             {/* page content */}
@@ -36,7 +54,7 @@ const Outlet = () => {
                                                 </div>
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white">Total Depojit: 0 tk</span>
+                                                    <span class="px-2 mt-2 dark:text-white">Total Deposit: 0 tk</span>
                                                 </div>
                                                 <div class="flex items-start">
 
@@ -87,7 +105,7 @@ const Outlet = () => {
                                 <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
                                     <div className="card w-96 bg-base-100 shadow-xl ">
                                         <div className="card-body">
-                                            <h2 className="card-title">0.00!</h2>
+                                            <h2 className="card-title ">70</h2>
                                             <AiFillFileText className="mr-2" />
                                             <p>My Total Meal</p>
                                         </div>
@@ -96,7 +114,7 @@ const Outlet = () => {
                                 <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
                                     <div className="card w-96 bg-base-300 shadow-xl  ">
                                         <div className="card-body">
-                                            <h2 className="card-title">0.00!</h2>
+                                            <h2 className="card-title">{data?.amount} tk</h2>
                                             <AiFillFileText className="mr-2" />
                                             <p>My Deposit</p>
                                         </div>
@@ -105,7 +123,7 @@ const Outlet = () => {
                                 <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
                                     <div className="card w-96 bg-base-100 shadow-xl ">
                                         <div className="card-body">
-                                            <h2 className="card-title">0.00!</h2>
+                                            <h2 className="card-title">1200 tk</h2>
                                             <AiFillFileText className="mr-2" />
                                             <p>My Cost</p>
                                         </div>
@@ -114,61 +132,81 @@ const Outlet = () => {
                                 <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
                                     <div className="card w-96 bg-base-300 shadow-xl ">
                                         <div className="card-body">
-                                            <h2 className="card-title">0.00!</h2>
+                                            <h2 className="card-title">1600 tk</h2>
                                             <AiFillFileText className="mr-2" />
                                             <p>My Balance</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
-                                    <div className="card w-96 bg-base-300 shadow-xl ">
-                                        <div className="card-body">
-                                            <h2 className="card-title">0.00!</h2>
-                                            <AiFillFileText className="mr-2" />
-                                            <p>My Balance</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
-                                    <div className="card w-96 bg-base-300 shadow-xl ">
-                                        <div className="card-body">
-                                            <h2 className="card-title">0.00!</h2>
-                                            <AiFillFileText className="mr-2" />
-                                            <p>My Balance</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
-                                    <div className="card w-96 bg-base-300 shadow-xl ">
-                                        <div className="card-body">
-                                            <h2 className="card-title">0.00!</h2>
-                                            <AiFillFileText className="mr-2" />
-                                            <p>My Balance</p>
-                                        </div>
-                                    </div>
-                                </div>
+
+
 
 
 
                             </div>
+                            <div className='flex'>
 
+                                <h2 className='my-5 text-2xl uppercase'>My bazar date :- </h2>
+                                <DayPicker
+                                    mode="single"
+                                    selected={selected}
+                                    onSelect={setSelected}
 
+                                />
 
-
+                            </div>
 
                         </div>
                     </div>
                 </div>
-                <section className="p-6 bg-black text-gray-100">
+                <section className="p-6 bg-gray-900 text-gray-100">
                     <div className="container p-4 mx-auto text-center">
                         <h2 className="text-4xl font-bold">Total Member info</h2>
                     </div>
-                    <div className="container flex flex-wrap justify-center mx-auto dark:text-gray-400">
-                        <div className="flex  w-1/2 p-6 ">
+                    <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
 
+                        <div className="overflow-x-auto">
+                            <table className="w-full p-6 text-xs text-left whitespace-nowrap">
+
+                                <thead>
+                                    <tr className="dark:bg-gray-700">
+                                        <th className="p-3">Name</th>
+                                        <th className="p-3">Email</th>
+                                        <th className="p-3">Border No</th>
+                                        <th className="p-3">Room No</th>
+                                    </tr>
+                                </thead>
+
+                                {
+                                    allUser?.map(user => <> <tbody className="border-b dark:bg-gray-900 dark:border-gray-700">
+                                        <tr>
+                                            <td className="px-3 py-2">
+                                                <p>{user?.firstName + ' ' + user?.lastName}</p>
+                                            </td>
+
+
+                                            <td className="px-3 py-2">
+                                                <p>{user?.email}</p>
+                                            </td>
+                                            <td className="px-3 py-2">
+                                                <p>{user?.RoomNumber}</p>
+
+                                            </td>
+                                            <td className="px-3 py-2">
+                                                <p>{user?.borderNumber}</p>
+
+                                            </td>
+
+
+                                        </tr>
+
+                                    </tbody></>)
+                                }
+
+
+
+                            </table>
                         </div>
-
-
                     </div>
                 </section>
             </section>
