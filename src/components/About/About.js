@@ -9,15 +9,13 @@ const About = () => {
     const userStore = useContext(UserStore);
     const currentUser = userStore?.data;
 
-    if (!currentUser) {
-        return <SpinLoading></SpinLoading>
-    }
+  
     // console.log(currentUser)
     return (
         <div>
-            <h2 className=" lg:text-3xl text-xl font-semibold leading-tight text-center my-3 text-gray-200">To join out Mess, please submit the Form </h2>
+            <h2 className=" lg:text-3xl text-xl font-semibold leading-tight text-center my-3 text-gray-200">About </h2>
 
-            <StudentRegister currentUser={currentUser}></StudentRegister>
+         
 
 
         </div>

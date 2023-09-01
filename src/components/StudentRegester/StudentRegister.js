@@ -42,7 +42,7 @@ const StudentRegister = ({ currentUser }) => {
                     </div>
                     <div className="space-y-2">
                         <label for="Email" className="block text-sm"> Email</label>
-                        <input id="Email" value={currentUser?.email} className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" {...register('email')} />
+                        <input id="Email" value={currentUser?.email} className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" placeholder='Email address' {...register('email')} />
                     </div>
                     <div className="space-y-2">
                         <label for="Batch" className="block text-sm"> Batch No</label>
@@ -57,6 +57,14 @@ const StudentRegister = ({ currentUser }) => {
 
 
                     </div>
+
+                    <div className="space-y-2">
+                        <label for="Registration" className="block text-sm"> Registration Number</label>
+                        <input type='number' id="Registration" placeholder='Registration NO' className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" {...register('Registration')} />
+                        {errors.Registration && <p className='text-red-500'>Registration is required.</p>}
+
+                    </div>
+
                     <div className="space-y-2">
                         <label for="phoneNumber" className="block text-sm">Phone Number</label>
                         <input type='number' id="phoneNumber" placeholder="Phone Number" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" {...register('phoneNumber', { required: true })} />
@@ -73,6 +81,12 @@ const StudentRegister = ({ currentUser }) => {
                         {errors.lastName && <p className='text-red-500'>Border Number is required.</p>}
                     </div>
 
+                    <div className="space-y-2">
+                        <label for="description" className="block text-sm"> Description</label>
+                        <textarea placeholder='some comment here' id="description" name="description" rows="4" cols="50" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" {...register('Description', { required: true })} />
+                        {errors.Department && <p className='text-red-500'>Description is required.</p>}
+
+                    </div>
 
                 </div>
                 <div className='mt-[-20px]'>

@@ -12,11 +12,11 @@ const Navigation = () => {
     // const [globalUser, setGlobalUser] = useState({});
 
     // user info part
-    const [user] = useAuthState(auth);
+    // const [user] = useAuthState(auth);
     // console.log(user?.displayName)
     // const email = user?.email;
-    const userStore = useContext(UserStore);
-    const data = userStore?.data;
+    // const userStore = useContext(UserStore);
+    // const data = userStore?.data;
 
 
     // fetch(`http://localhost:5000/user/${email}`)
@@ -26,7 +26,7 @@ const Navigation = () => {
     // console.log(globalUser)
 
     const handleSignOut = () => {
-        signOut(auth);
+
 
     }
 
@@ -65,6 +65,16 @@ const Navigation = () => {
                     </li>
                     <li className="flex">
                         <NavLink
+                            to="/joinMember"
+                            className={({ isActive }) =>
+                                isActive ? activeStyle : normalLink
+                            }
+                        >
+                            Join member
+                        </NavLink>
+                    </li>
+                    <li className="flex">
+                        <NavLink
                             to="/dashboard"
                             className={({ isActive }) =>
                                 isActive ? activeStyle : normalLink
@@ -77,25 +87,10 @@ const Navigation = () => {
 
                 </ul>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-
-                    {
-                        user ?
-                            <NavLink className='text-white'>{data?.firstName} </NavLink> :
-                            <SpinLoading height='h-12' width='w-12'></SpinLoading>
-
-                    }
-                    <NavLink className='text-white'>{user?.displayName} </NavLink>
-
-                    {
-                        user ?
-                            <button onClick={handleSignOut} className='text-white px-2 mx-2 border-l-2  '> Log out </button>
-                            :
-                            <NavLink className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900" eventKey="link-1" to="/login">Log In</NavLink>
-                    }
-
-
-
+                    <NavLink className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900" eventKey="link-1" to="/login">Log In</NavLink>
                 </div>
+
+                
                 <button className="p-4 lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>

@@ -18,6 +18,7 @@ import { UserStoreProvider } from './StateManagment/UserContexStore';
 import AddMeal from './components/Dashboard/AddMeal/AddMeal';
 import 'react-toastify/dist/ReactToastify.css';
 import TodaysMeal from './components/AdminDashboard/TodaysMeal/TodaysMeal';
+import StudentRegister from './components/StudentRegester/StudentRegister';
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
+          <Route path="/joinMember" element={ <StudentRegister/> }></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
 
@@ -44,7 +46,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />}>
 
             <Route index element={<Outlet></Outlet>} ></Route>
-            <Route path='add-member' element={<AddMember></AddMember>} ></Route>
+            
             <Route path='mealCost' element={<AddMealCost></AddMealCost>} ></Route>
             <Route path='addMeal' element={<AddMeal></AddMeal>} ></Route>
             <Route path='addCost' element={<AddOtherCost></AddOtherCost>} ></Route>
@@ -55,7 +57,7 @@ function App() {
 
             <Route index element={<AdminOutlet></AdminOutlet>} ></Route>
             <Route path='today-on-meal' element={<TodaysMeal></TodaysMeal>} ></Route>
-
+            <Route path='add-member' element={<AddMember></AddMember>} ></Route>
 
 
           </Route>

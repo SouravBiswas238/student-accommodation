@@ -123,7 +123,7 @@ const Outlet = () => {
                                 <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
                                     <div className="card w-96 bg-base-100 shadow-xl ">
                                         <div className="card-body">
-                                            <h2 className="card-title">1200 tk</h2>
+                                            <h2 className="card-title">See here at the last date of the month...</h2>
                                             <AiFillFileText className="mr-2" />
                                             <p>My Cost</p>
                                         </div>

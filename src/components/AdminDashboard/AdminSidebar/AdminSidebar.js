@@ -43,18 +43,20 @@ const AdminSidebar = ({ dashboardSwitch }) => {
                         </li>
                     </Link>
 
+                    <Link to="add-member">
+                        <li className={dashboardLinkStyle}>
+                            <IoMdPersonAdd className="mr-2" />
+                            <span className={`${!dbSwitch && 'hidden'}`}> Add member</span>
+                        </li>
+                    </Link>
+
                     <Link to="">
                         <li className={dashboardLinkStyle}>
                             <AiFillFileText className="mr-2" />
                             <span className={`${!dbSwitch && 'hidden'} text-[16px]`} > Remove  User</span>
                         </li>
                     </Link>
-                    <Link to="">
-                        <li className={dashboardLinkStyle}>
-                            <AiFillFileText className="mr-2" />
-                            <span className={`${!dbSwitch && 'hidden'} text-[16px]`} > Change Manager</span>
-                        </li>
-                    </Link>
+                    
                     <Link to="">
                         <li className={dashboardLinkStyle}>
                             <AiFillFileText className="mr-2" />

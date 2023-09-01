@@ -41,12 +41,7 @@ const Sidebar = ({ dashboardSwitch }) => {
                         </li>
                     </Link>
 
-                    <Link to="add-member">
-                        <li className={dashboardLinkStyle}>
-                            <IoMdPersonAdd className="mr-2" />
-                            <span className={`${!dbSwitch && 'hidden'}`}> Add member</span>
-                        </li>
-                    </Link>
+                    
 
                     <Link to="addMeal">
                         <li className={dashboardLinkStyle}>
@@ -57,7 +52,7 @@ const Sidebar = ({ dashboardSwitch }) => {
                     <Link to="mealCost">
                         <li className={dashboardLinkStyle}>
                             <AiOutlineUpload className="mr-2" />
-                            <span className={`${!dbSwitch && 'hidden'}`}>Add Meal Cost</span>
+                            <span className={`${!dbSwitch && 'hidden'}`}>Add Meal Payment</span>
                         </li>
                     </Link>
                     <Link to="addCost">

@@ -1,6 +1,26 @@
 import React from 'react';
 
 const AddMember = () => {
+
+
+
+    const handleSubmit = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const batch = form.batch.value;
+        const department = form.department.value;
+        const registration = form.registration.value;
+        const phoneNumber = form.phoneNumber.value;
+        const borderNumber = form.borderNumber.value;
+        console.log(name, email, batch, department, registration, phoneNumber, borderNumber);
+
+    }
+
+
+
     return (
         <div>
             <div className="ml-8 mr-8 ">
@@ -8,61 +28,60 @@ const AddMember = () => {
                     Add Member To Your Mess
                 </h1>
 
-                <div className="flex flex-row justify-between ">
-                    <div className="max-w-60% p-10 ">
-                        <h5 className="text-orange-500 mb-2 font-bold text-1xl">Create & Add New Member</h5>
-                        <div className="flex flex-col gap-2">
-                            <input className="border-2 p-2 rounded-xl" type="text" name="" placeholder="New Member Name" id="text" required></input>
+                <form onSubmit={handleSubmit} className="space-y-8 ng-untouched ng-pristine ng-valid">
+                    <div className="lg:flex flex-row justify-around ">
 
-                            <input className="border-2 p-2 rounded-xl" type="Email" placeholder="New member Email" name="email" id="text" required></input>
+                        <div className='lg:p-10 px-10 w-full'>
+
+                            <div className="pt-4 space-y-1">
+                                <label for="Name" className="block text-sm"> Name</label>
+                                <input type='text' name="name" id="Name" placeholder="Enter your name" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                            </div>
+                            <div className="pt-4 space-y-1">
+                                <label for="Email" className="block text-sm"> Email</label>
+                                <input type='email' name="email" id="Email" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" placeholder='Email address' />
+                            </div>
+                            <div className="pt-4 space-y-1">
+                                <label for="Batch" className="block text-sm"> Batch No</label>
+                                <input name="batch" type='number' id="Batch" placeholder='Batch NO' className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                            </div>
+                            <div className="pt-4 space-y-1">
+                                <label for="Department" className="block text-sm"> Department</label>
+                                <input type='text' name="department" id="Department" placeholder='Department' className="w-full space-y-2 px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                            </div>
 
                         </div>
-                        <p className="text-justify mt-3">
-                            কোন মেম্বার এর সঠিক ইমেইল জানা না থাকলে আপাতত demo(যেকোন নাম)@mm.app এই ইমেইল দিয়ে একাউন্ট খুলুন,পরে তাকে বলবেন সঠিক ইমেইল সেট করতে। (If any of your member doesn't have valid email,use a demo email using this template demo..@mm.app ,tell him to set the valid email later.)
-                        </p>
-                        <div className="flex flex-col">
-
-                            <select className="border-2 p-2 rounded-xl" name="cars" id="cars" form="carform">
-                                <option disabled selected className=" ">Is he manager?</option>
-                                <option className='text-white' value="saab">Saab</option>
-                                <option className='text-white' value="opel">Opel</option>
-                            </select>
-
-
-                        </div>
 
 
 
-                        <p className="text-justify my-2">
-                            New member's default password is: 123456 , use this password for log In to his account, then change default password (নতুন মেম্বারের ডিফল্ট পাসওয়ার্ড : 123456 , তার অ্যাকাউন্টে লগ ইন করার জন্য তার ইমেইল এবং পাসওয়ার্ড 123456 দিয়ে লগ ইন করতে বলুন, লগ ইন করার পর ডিফল্ট পাসওয়ার্ড পরিবর্তন করতে বলুন)
-                        </p>
-                        <div className="flex flex-col ">
-                            <button type="button" className="border-2 p-2 rounded-xl bg-orange-500 hover:bg-orange-300 ">Create and add members to your mess</button>
+                        <div className='lg:p-10 px-10 w-full'>
+
+                            <div className="pt-4 space-y-1">
+                                <label for="Registration" className="block text-sm"> Registration Number</label>
+                                <input name="registration" type='number' id="Registration" placeholder='Registration NO' className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                            </div>
+
+                            <div className="pt-4 space-y-1">
+                                <label for="phoneNumber" className="block text-sm">Phone Number</label>
+                                <input name="phoneNumber" type='number' id="phoneNumber" placeholder="Phone Number" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                            </div>
+                            <div className="pt-4 space-y-1">
+                                <label for="RoomNumber" className="block text-sm">Room Number</label>
+                                <input name="roomNumber" type='number' id="RoomNumber" placeholder="Room Number" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                            </div>
+
+                            <div className="pt-4 space-y-1">
+                                <label for="borderNumber" className="block text-sm">Border Number</label>
+                                <input name="borderNumber" type='number' id="borderNumber" placeholder="Border Number" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
+                            </div>
+
                         </div>
 
                     </div>
-                    <div className="max-w-40% p-10">
-                        <h1 className='text-orange-500 font-bold text-1xl'>Add Existing Member By Email</h1>
-                        <div className="flex flex-col mt-4">
-                            <input className="border-2 p-2 rounded-xl" type="Email" placeholder="New member Email" name="email" id="text" required></input>
-                        </div>
-
-
-                        <p className="text-justify my-2">
-
-                            If Any mess member already open an account on our app,then add him into your mess by putting his email.In that case if he already open an mess also under his name,tell him to delete the mess first.
-                        </p>
-                        <p>
-                            (যদি কোন মেস মেম্বার অলরেডি আমাদের এপ থেকে তার নিজের একাউন্ট খুলে থাকে তাহলে এই অপশন এ তার ইমেইল টি বসিয়ে তাকে আপনাদের মেসে যুক্ত করুন।এক্ষেত্রে সে যদি তার একাউন্ট এর আন্ডারে কোন মেস অলরেডি তৈরি করে থাকে তাকে বলুন সেই মেস টি ডিলেট করে ফেলতে,এরপর তাকে আপনাদের মেসে যুক্ত করুন)
-
-                        </p>
-                        <div className="flex flex-col gap-2">
-                            <input className="border-2 p-2 rounded-xl" type="text" placeholder="IS he Manager" name="" id="text" required></input>
-                            <button className="border-2 p-2 rounded-xl bg-orange-500 hover:bg-orange-300" type="button">Create and add members to your mess</button>
-                        </div>
+                    <div className='mt-[-20px] flex justify-center'>
+                        <input type="submit" className=" w-2/3 px-8 py-3 text-white text-xl font-semibold rounded-md dark:bg-orange-400 hover:bg-orange-600" />
                     </div>
-
-                </div>
+                </form>
 
             </div>
         </div>

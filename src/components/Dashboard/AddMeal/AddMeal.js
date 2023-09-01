@@ -14,8 +14,14 @@ const AddMeal = () => {
     const email = userStore?.email;
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const handelMeal = data => {
-        data = { data, email }
+    const handelMeal = formData => {
+        const { date, meal } = formData;
+
+        const data = {
+            date: format(selected, 'PP'), // Use selected date from state
+            meal,
+            email
+        };
 
         fetch(`http://localhost:5000/user/${email}`, {
             method: 'PUT',
@@ -27,9 +33,13 @@ const AddMeal = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-            })
+            });
 
-        toast.success("successfully adding")
+        // Log selected date and meal number to the console
+        console.log('Selected Date:', date);
+        console.log('Meal Number:', meal);
+
+        toast.success("Successfully added");
     }
 
 

@@ -31,8 +31,8 @@ const AddMealCost = () => {
     return (
         <div>
             <div class="flex flex-col justify-center">
-                <p class="flex justify-center text-red-500 text-3xl font-semibold my-6">
-                    Add money
+                <p class="flex justify-center text-indigo-600  text-3xl font-semibold my-6">
+                    <span className='border-b-4 border-indigo-500 pb-3'>Add money</span>
                 </p>
 
                 <div class="w-[50%] mx-auto bg-gray-200 flex items-center justify-center px-5 pb-10 pt-16">
@@ -48,68 +48,44 @@ const AddMealCost = () => {
                         <div class="mb-3 flex -mx-2">
                             <div class="px-2">
                                 <label for="type1" class="flex items-center cursor-pointer">
-                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked></input>
-                                    <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-8 ml-3"></img>
+                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" ></input>
+                                    <img src="https://www.logo.wine/a/logo/BKash/BKash-Logo.wine.svg" alt='BKash' class="h-8 ml-3"></img>
                                 </label>
                             </div>
                             <div class="px-2">
                                 <label for="type2" class="flex items-center cursor-pointer">
                                     <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type2"></input>
-                                    <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-8 ml-3"></img>
+                                    <img src="https://www.logo.wine/a/logo/Nagad/Nagad-Logo.wine.svg" alt='Nagad' className="h-8 ml-3"></img>
                                 </label>
                             </div>
+
+                            <div class="px-2">
+                                <label for="type3" class="flex items-center cursor-pointer">
+                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type3"></input>
+                                    <img src="https://seeklogo.com/images/D/dutch-bangla-rocket-logo-B4D1CC458D-seeklogo.com.png" alt='Rocket' className="h-8 ml-3"></img>
+                                </label>
+                            </div>
+
+                            <div class="px-2">
+                                <label for="type4" class="flex items-center cursor-pointer">
+                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type4"></input>
+                                    <img src="https://api.upaybd.com/media/dynamic_image/Website_Footer.png" alt='Upay' className="h-8 ml-3"></img>
+                                </label>
+                            </div>
+
                         </div>
+
                         <div class="mb-3">
-                            <label class="font-bold text-sm mb-2 ml-1">Name on card</label>
+                            <label class="font-bold text-sm mb-2 ml-1">Account number</label>
                             <div>
-                                <input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text" />
+                                <input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 text-gray-100 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000 0000 0000" type="text" />
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="font-bold text-sm mb-2 ml-1">Card number</label>
-                            <div>
-                                <input class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text" />
-                            </div>
-                        </div>
-                        <div class="mb-3 -mx-2 flex items-end">
-                            <div class="px-2 w-1/2">
-                                <label class="font-bold text-sm mb-2 ml-1">Expiration date</label>
-                                <div>
-                                    <select class="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                                        <option value="01">01 - January</option>
-                                        <option value="02">02 - February</option>
-                                        <option value="03">03 - March</option>
-                                        <option value="04">04 - April</option>
-                                        <option value="05">05 - May</option>
-                                        <option value="06">06 - June</option>
-                                        <option value="07">07 - July</option>
-                                        <option value="08">08 - August</option>
-                                        <option value="09">09 - September</option>
-                                        <option value="10">10 - October</option>
-                                        <option value="11">11 - November</option>
-                                        <option value="12">12 - December</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="px-2 w-1/2">
-                                <select class="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2025">2025</option>
-                                    <option value="2026">2026</option>
-                                    <option value="2027">2027</option>
-                                    <option value="2028">2028</option>
-                                    <option value="2029">2029</option>
-                                </select>
-                            </div>
-                        </div>
+                        
                         <div class="mb-10">
-                            <label class="font-bold text-sm mb-2 ml-1">Security code</label>
+                            <label class="font-bold  text-sm mb-2 ml-1">Security code</label>
                             <div>
-                                <input class="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text" />
+                                <input class="w-32 px-3 py-2 mb-1 border-2 border-gray-200 text-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text" />
                             </div>
                         </div>
                         <form onSubmit={handleSubmit(handelPay)} action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
