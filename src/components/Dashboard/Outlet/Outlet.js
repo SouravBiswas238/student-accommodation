@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { AiFillFileText } from 'react-icons/ai';
 import { UserStore } from '../../../StateManagment/UserContexStore';
+import SpinLoading from '../../Loading/SpinLoading';
 import './Outlet.css'
 
 const Outlet = () => {
@@ -29,7 +30,7 @@ const Outlet = () => {
     return (
         <div>
             {/* page content */}
-            <section className="dark:bg-gray-800 text-gray-100">
+            <section className=" bg-gray-800 text-gray-100">
                 <div className=" flex flex-col mx-auto lg:flex-row">
                     <div className=''>
                         <div className="mockup-phone">
@@ -45,40 +46,40 @@ const Outlet = () => {
                                             </div>
                                             <div class="flex items-start">
 
-                                                <span class="px-2 mt-2 dark:text-white">  Month:January(Running)</span>
+                                                <span class="px-2 mt-2  text-white">  Month:January(Running)</span>
                                             </div>
                                             <div class=" myCss text-base text-black-500 font-thin">
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white">Mess Balance: 0 tk</span>
+                                                    <span class="px-2 mt-2  text-white">Mess Balance: 0 tk</span>
                                                 </div>
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white">Total Deposit: 0 tk</span>
+                                                    <span class="px-2 mt-2  text-white">Total Deposit: 0 tk</span>
                                                 </div>
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white">Month:January(Running)</span>
+                                                    <span class="px-2 mt-2  text-white">Month:January(Running)</span>
                                                 </div>
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white">Total Meal cost: 0</span>
+                                                    <span class="px-2 mt-2  text-white">Total Meal cost: 0</span>
                                                 </div>
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white">  Mess Meal Rate: 0 tk</span>
+                                                    <span class="px-2 mt-2  text-white">  Mess Meal Rate: 0 tk</span>
                                                 </div>
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white"> Total Individual Cost: 0 tk</span>
+                                                    <span class="px-2 mt-2  text-white"> Total Individual Cost: 0 tk</span>
                                                 </div>
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white">Total Shared Cost: 0 tk</span>
+                                                    <span class="px-2 mt-2  text-white">Total Shared Cost: 0 tk</span>
                                                 </div>
                                                 <div class="flex items-start">
 
-                                                    <span class="px-2 mt-2 dark:text-white">
+                                                    <span class="px-2 mt-2  text-white">
 
                                                         Shared Cost Per Person: 0.00 tk</span>
                                                 </div>
@@ -95,13 +96,13 @@ const Outlet = () => {
 
 
                     {/* my personal info */}
-                    <div className="container flex flex-wrap justify-center mx-auto dark:text-gray-400 text-gray-600 ">
+                    <div className="container flex flex-wrap justify-center mx-auto  text-gray-400 text-gray-600 ">
                         <div className="container p-4 mx-auto text-center">
                             <h2 className="text-4xl font-bold">My Personal info</h2>
                         </div>
                         <div className=' flex flex-wrap justify-center mx-auto text-gray-400'>
 
-                            <div className="container flex flex-wrap justify-center mx-auto dark:text-gray-400">
+                            <div className="container flex flex-wrap justify-center mx-auto  text-gray-400">
                                 <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
                                     <div className="card w-96 bg-base-100 shadow-xl ">
                                         <div className="card-body">
@@ -114,7 +115,7 @@ const Outlet = () => {
                                 <div className="flex justify-center w-1/2 p-3 align-middle md:w-1/3 xl:w-1/4">
                                     <div className="card w-96 bg-base-300 shadow-xl  ">
                                         <div className="card-body">
-                                            <h2 className="card-title">{data?.amount} tk</h2>
+                                            <h2 className="card-title">{data?.amount ? data?.amount : <SpinLoading height='h-[25px]' width='w-[20px]'></SpinLoading>}tk</h2>
                                             <AiFillFileText className="mr-2" />
                                             <p>My Deposit</p>
                                         </div>
@@ -163,13 +164,13 @@ const Outlet = () => {
                     <div className="container p-4 mx-auto text-center">
                         <h2 className="text-4xl font-bold">Total Member info</h2>
                     </div>
-                    <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
+                    <div className="container p-2 mx-auto sm:p-4  text-gray-100">
 
                         <div className="overflow-x-auto">
                             <table className="w-full p-6 text-xs text-left whitespace-nowrap">
 
                                 <thead>
-                                    <tr className="dark:bg-gray-700">
+                                    <tr className=" bg-gray-700">
                                         <th className="p-3">Name</th>
                                         <th className="p-3">Email</th>
                                         <th className="p-3">Border No</th>
@@ -178,7 +179,7 @@ const Outlet = () => {
                                 </thead>
 
                                 {
-                                    allUser?.map(user => <> <tbody className="border-b dark:bg-gray-900 dark:border-gray-700">
+                                    allUser?.map(user => <> <tbody className="border-b  bg-gray-900  border-gray-700">
                                         <tr>
                                             <td className="px-3 py-2">
                                                 <p>{user?.firstName + ' ' + user?.lastName}</p>

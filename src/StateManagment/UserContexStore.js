@@ -109,6 +109,8 @@ const UserStoreProvider = ({ children }) => {
         allUser,
         allAdmin,
         activeUser,
+        isLoading,
+        refetch,
 
     };
     //user context provider component //==> Don't move this one !

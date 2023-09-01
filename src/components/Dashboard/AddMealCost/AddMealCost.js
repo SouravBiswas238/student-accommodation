@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserStore } from '../../../StateManagment/UserContexStore';
 import './AddMealCost.css'
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 const AddMealCost = () => {
@@ -26,7 +26,7 @@ const AddMealCost = () => {
             .then(data => {
                 console.log(data);
             })
-            toast.success('Payment Successful')
+        toast.success('Payment Successful')
     }
     return (
         <div>
@@ -117,7 +117,7 @@ const AddMealCost = () => {
 
                                 <div className="space-y-2">
                                     <label for="amount" className="block text-sm">Amount</label>
-                                    <input type='amount' id="amount" placeholder="amount" className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" {...register('amount', { required: true })} />
+                                    <input type='amount' id="amount" placeholder="amount" className="w-full px-3 py-2 border rounded-md  border-gray-700  bg-gray-900  text-gray-100 focus: border-violet-400" {...register('amount', { required: true })} />
                                     {errors.amount && <p className='text-red-500'>Cost  is required.</p>}
                                 </div>
 

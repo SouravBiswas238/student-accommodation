@@ -13,7 +13,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
 <QueryClientProvider client={queryClient}>
-
     <React.StrictMode>
       <App />
     </React.StrictMode>

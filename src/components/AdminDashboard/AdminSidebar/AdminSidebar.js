@@ -78,16 +78,16 @@ const AdminSidebar = ({ dashboardSwitch }) => {
 
 
                     <div className="flex items-center p-2 mt-12 space-x-4 justify-self-end">
-                        <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-lg dark:bg-gray-500" />
+                        <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-lg  bg-gray-500" />
                         <div className={`${!dbSwitch && 'hidden'}`}>
                             <h2 className="text-lg font-semibold  "> Leroy Jenkins</h2>
                             <div className='flex justify-between'>
 
                                 <span className="flex items-center">
-                                    <a rel="noopener noreferrer" href="#" className="text-xs hover:underline dark:text-gray-400">View profile</a>
+                                    <a rel="noopener noreferrer" href="#" className="text-xs hover:underline  text-gray-400">View profile</a>
                                 </span>
                                 <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="flex items-center space-x-1 w-5 h-5 fill-current dark:text-gray-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="flex items-center space-x-1 w-5 h-5 fill-current  text-gray-400">
                                         <path d="M440,424V88H352V13.005L88,58.522V424H16v32h86.9L352,490.358V120h56V456h88V424ZM320,453.642,120,426.056V85.478L320,51Z"></path>
                                         <rect width="32" height="64" x="256" y="232"></rect>
                                     </svg>

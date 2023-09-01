@@ -2,6 +2,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { UserStore } from '../../../StateManagment/UserContexStore';
+import SpinLoading from '../../Loading/SpinLoading';
+import { useNavigate } from "react-router-dom";
 
 const AdminOutlet = () => {
     const [allUser, setAllUser] = useState([]);
@@ -12,13 +14,15 @@ const AdminOutlet = () => {
                 setAllUser(data)
             })
     }, [])
+    const navigate = useNavigate();
+
 
     // const userStore = useContext(UserStore);
     // const email = userStore?.email;
 
     const removeMember = (email) => {
         console.log('removeMember')
-
+        navigate(0)
         const data = { isMember: false }
 
         fetch(`http://localhost:5000/user/${email}`, {
@@ -35,8 +39,8 @@ const AdminOutlet = () => {
 
     }
     const addMember = (email) => {
-        console.log(email)
 
+        navigate(0)
         const data = { isMember: true }
 
 
@@ -63,21 +67,22 @@ const AdminOutlet = () => {
 
     // console.log(allUser)
 
-    // if (isLoading) return "Loading...";
+    if (!allUser) {
+        return <SpinLoading height='h-[205px]' width='w-[200px]'></SpinLoading>
+    }
 
-    // if (error) return "An error has occurred: " + error.message;
 
     return (
         <div>
 
 
-            <div className="container p-2 mx-auto sm:p-4 dark:text-gray-100">
+            <div className="container p-2 mx-auto sm:p-4  text-gray-100">
                 <h2 className="mb-4 text-2xl font-semibold leading-tight text-center">All member list </h2>
                 <div className="overflow-x-auto">
                     <table className="w-full p-6 text-xs text-left whitespace-nowrap">
 
                         <thead>
-                            <tr className="dark:bg-gray-700">
+                            <tr className=" bg-gray-700">
                                 <th className="p-3">Name</th>
                                 <th className="p-3">Phone</th>
                                 <th className="p-3">Email</th>
@@ -91,7 +96,7 @@ const AdminOutlet = () => {
                         </thead>
 
                         {
-                            allUser?.map(user => <> <tbody className="border-b dark:bg-gray-900 dark:border-gray-700">
+                            allUser?.map(user => <> <tbody className="border-b  bg-gray-900  border-gray-700">
                                 <tr>
                                     <td className="px-3 py-2">
                                         <p>{user?.firstName + ' ' + user?.lastName}</p>
@@ -113,11 +118,11 @@ const AdminOutlet = () => {
                                     </td>
                                     <td className="px-3 py-2">
                                         {
-                                            user?.isMember ? <> <button onClick={() => removeMember(user?.email)} className='btn btn-sm bg-red-500 text-white'>Remove member</button>  <p className='px-3  mt-1 dark:text-gray-400'></p></> : <> <button onClick={() => addMember(user?.email)} className='btn btn-sm bg-violet-700 text-white'>Add member</button>  <p className='px-3  mt-1 dark:text-gray-400'>Pending..</p></>
+                                            user?.isMember ? <> <button onClick={() => removeMember(user?.email)} className='btn btn-sm bg-red-500 text-white'>Remove member</button>  <p className='px-3  mt-1  text-gray-400'></p></> : <> <button onClick={() => addMember(user?.email)} className='btn btn-sm bg-violet-700 text-white'>Add member</button>  <p className='px-3  mt-1  text-gray-400'>Pending..</p></>
                                         }
                                     </td>
                                     <td className="px-3 py-2">
-                                        <button type="button" title="Open details" className="p-1 rounded-full dark:text-gray-600 hover:dark:bg-gray-700 focus:dark:bg-gray-700">
+                                        <button type="button" title="Open details" className="p-1 rounded-full  text-gray-600 hover: bg-gray-700 focus: bg-gray-700">
                                             <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
                                                 <path d="M12 6a2 2 0 110-4 2 2 0 010 4zm0 8a2 2 0 110-4 2 2 0 010 4zm-2 6a2 2 0 104 0 2 2 0 00-4 0z"></path>
                                             </svg>

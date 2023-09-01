@@ -41,7 +41,7 @@ const AddMeal = () => {
                 </p>
                 <div className="flex space-x-4 p-3 mx-auto w-[40%] bg-gray-700">
                     < div className=''>
-                        <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="object-cover w-6 h-6 rounded-full dark:bg-gray-500" />
+                        <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="object-cover w-6 h-6 rounded-full  bg-gray-500" />
                     </div>
                     <div>
                         <h4 className="font-bold justify-center">{data?.firstName + ' ' + data?.lastName}</h4>
@@ -67,7 +67,7 @@ const AddMeal = () => {
                                 {errors.date && <p className='text-red-500'>Please enter a date </p>}
                             </div>
                             <div className="space-y-1 text-sm">
-                                <label for="meal" className="block dark:text-gray-400">Meal number</label>
+                                <label for="meal" className="block  text-gray-400">Meal number</label>
                                 <input name="meal" id="meal" placeholder="1" className="w-full px-4 py-3 rounded-md  bg-gray-900 text-gray-100 border-violet-400" {...register('meal', {
                                     required: true,
                                     valueAsNumber: true,

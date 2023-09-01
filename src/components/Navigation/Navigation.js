@@ -17,6 +17,7 @@ const Navigation = () => {
     // const email = user?.email;
     const userStore = useContext(UserStore);
     const data = userStore?.data;
+    const isLoading = userStore?.isLoading;
 
 
     // fetch(`http://localhost:5000/user/${email}`)
@@ -24,6 +25,7 @@ const Navigation = () => {
     //     .then((data) => setGlobalUser(data));
 
     // console.log(globalUser)
+
 
     const handleSignOut = () => {
         signOut(auth);
@@ -60,7 +62,7 @@ const Navigation = () => {
                                 isActive ? activeStyle : normalLink
                             }
                         >
-                            About
+                            Join Mess
                         </NavLink>
                     </li>
                     <li className="flex">
@@ -79,16 +81,15 @@ const Navigation = () => {
                 <div className="items-center flex-shrink-0 hidden lg:flex">
 
                     {
-                        user ?
-                            <NavLink className='text-white'>{data?.firstName} </NavLink> :
-                            <SpinLoading height='h-12' width='w-12'></SpinLoading>
 
+                        !user && <SpinLoading height='h-[25px]' width='w-[20px]'></SpinLoading>
                     }
+                    <NavLink className='text-white'>{user?.email.slice(0, 6)} </NavLink>
                     <NavLink className='text-white'>{user?.displayName} </NavLink>
 
                     {
                         user ?
-                            <button onClick={handleSignOut} className='text-white px-2 mx-2 border-l-2  '> Log out </button>
+                            <button onClick={handleSignOut} className='text-white px-2 mx-2 border-l-2  '> Log out  </button>
                             :
                             <NavLink className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900" eventKey="link-1" to="/login">Log In</NavLink>
                     }
